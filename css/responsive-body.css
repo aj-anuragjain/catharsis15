@@ -1,0 +1,256 @@
+/*---------------------------------------------------
+
+Theme Name: Moderno - Responsive Onepage portfolio Template
+Theme URI: http://themecafe.serverkurd.com/moderno/
+Author: ThemeCafe
+Author URI: http://themecafe.serverkurd.com
+
+
+  Content:
+
+    - Responsive - Header and Nav
+
+---------------------------------------------------*/
+
+@media all and (max-width: 991px){
+.my-mon{
+    margin-top: 50px;
+}
+}
+
+@media all and (max-width: 768px){
+
+	.page{
+		padding: 40px 0 0;
+	}
+
+	.pad-top{
+		padding-top: 20px;
+	}
+	.pad-bottom{
+		padding-bottom: 20px;
+	}
+	.fullwidth
+	{
+		margin: 40px 0;
+	}
+
+	.title h1{
+		font-size: 50px;
+	}
+	.title h2{
+		font-size: 30px;
+	}
+	.title h3{
+		font-size: 22px;
+	}
+
+	.logo{
+		max-width: 200px;
+	}
+	.home-text-slider .bxslider
+	{
+		font-size: 40px;
+	}
+
+
+	.post{
+		margin: 0 0 60px;
+	}
+	.post .post-title{
+		margin: 15px 0;
+		font-size: 20px;
+	}
+
+	.categories li a{
+		font-size: 14px;
+	}
+	.categories li a:before{
+		content: '+';
+		font-size: 16px;
+	}
+
+}
+
+@media all and (max-width: 767px){
+
+	.container{max-width: 570px;}
+	.service-item.float{
+		text-align: left;
+	}
+	.service-item.float span{
+		float: left;
+	}
+
+	.title h1{
+		font-size: 45px;
+	}
+	.title h2{
+		font-size: 28px;
+	}
+	.title h3{
+		font-size: 18px;
+	}
+
+
+	.logo{
+		max-width: 180px;
+	}
+	.home-text-slider .bxslider
+	{
+		font-size: 35px;
+	}
+
+	footer#footer .col-xs-6{
+		width: 100%;
+	}
+
+	footer#footer ul.socicals{
+		text-align: center;
+	}
+
+	footer#footer #copyright{
+		text-align: center;
+	}
+
+}
+
+@media all and (max-width: 568px){
+
+	.container{max-width: 538px;}
+
+
+	.logo{
+		max-width: 140px;
+	}
+	.home-text-slider{
+		margin-top: 15px;
+	}
+
+	.home-text-slider .bxslider
+	{
+		font-size: 35px;
+	}
+
+	.call-action a, .call-action a i{
+		margin: 15px 10px 0 0;
+	}
+
+
+.nav-kesho .container
+{
+	width: 55px;
+}
+
+
+.nav-kesho ul li
+{
+	margin-left: -30px;
+
+}
+.nav-kesho ul li:first-child
+{
+	margin-left: -26px;
+}
+.nav-kesho ul li a
+{
+	font-size: 28px;
+	padding-left: 4px;
+	width: 55px;
+}
+
+
+
+}
+@media all and (max-width: 480px) {
+
+	.container{max-width: 450px;}
+	.col-xs-6{
+		width: 100%;
+	}
+
+	.title h1{
+		font-size: 40px;
+	}
+	.title h2{
+		font-size: 26px;
+	}
+	.title h3{
+		font-size: 18px;
+	}
+
+	.logo{
+		max-width: 160px;
+	}
+	.home-text-slider .bxslider
+	{
+		font-size: 35px;
+	}
+
+	#timeline:before {
+		display: none;
+	}
+	#dates {
+		display: none;
+	}
+	#issues {
+		padding: 50px 0;
+	}
+	#next,
+	#prev {
+		left: 48%;
+	}
+
+	.post{
+		margin: 0 0 60px;
+	}
+	.post .post-title{
+		margin: 15px 0;
+		font-size: 20px;
+	}
+
+	.categories li a{
+		font-size: 14px;
+	}
+	.categories li a:before{
+		content: '+';
+		font-size: 16px;
+	}
+
+
+
+
+}
+
+@media all and (max-width: 384px){
+	.container{max-width: 354px;}
+	.title h1{
+		width: 100%;
+		display: block;
+	}
+	.title h1 + h3{
+		width: 100%;
+		display: block;
+	}
+}
+
+@media all and (max-width: 320px){
+	.container{max-width: 300px;}
+
+	.title h1{
+		font-size: 30px;
+	}
+	.title h2{
+		font-size: 24px;
+	}
+	.title h3{
+		font-size: 18px;
+	}
+	.logo{
+		max-width: 120px;
+	}
+	.home-text-slider .bxslider
+	{
+		font-size: 30px;
+	}
+}

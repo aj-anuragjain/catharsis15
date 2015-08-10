@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+  <head> 
+    <title>Catharsis 2015 (25-27 March)</title>
+    <link rel="shortcut icon" href="favicon.png" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eco Fest by IGDTU and AIACTR Delhi">
+    <meta name="author" content="Anurag Jain" >
+    <meta name="keywords" content="College Fest, Eco Fest, Delhi Fest, IP University Fest">
+    <meta name="description" content="Eco Fest, College Fest, IGDTU Fest, AIACTR Fest, AIT Fest">    
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/jquery.bxslider.css" rel="stylesheet">
+    <link href="css/supersized.css" rel="stylesheet">
+    <link href="css/effect.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/styletry.css" rel="stylesheet">
+    <link href="css/responsive-body.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/metro-style.css" rel="stylesheet">
+    <link href="css/Met-Js.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+    <!-- Js -->
+    <script type="text/javascript" src="js/jquery.scrollLock.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollLock.simple.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <style type="text/css">
+<!--
+.style1 {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+-->
+    </style>
+</head>
+  <body class="onepage">
+  	<!-- Catharsis PreLoader-->
+    
+    <canvas id="preloader" onmousemove="canv_mousemove(event);" onmouseout="mx=-1;my=-1;" style="position:absolute;left:0px;top:0px" width="1600" height="265">
+    </canvas>
+    <canvas id="insidePreloader" width="1600" height="265" style="border:1px solid black;display:none;"></canvas>
+    <canvas id="wordsTxt" style="display:none"></canvas>
+     <script type="text/javascript">
+        //var l=document.location + "";
+        //var index=l.indexOf('?t=');
+        var pixels=new Array();
+        var canv=$('preloader');
+        var ctx=canv.getContext('2d');
+        var wordCanv=$('insidePreloader');
+        var wordCtx=wordCanv.getContext('2d');
+        var mx=-1;
+        var my=-1;
+        var words="";
+        var txt=new Array();
+        var cw=0;
+        var ch=0;
+        var resolution=1;
+        var n=0;
+        var timerRunning=false;
+        var resHalfFloor=0;
+        var resHalfCeil=0;
+        function canv_mousemove(evt)
+        {
+          mx=evt.clientX-canv.offsetLeft;
+          my=evt.clientY-canv.offsetTop;
+        }
+        function Pixel(homeX,homeY)
+        {
+          this.homeX=homeX;
+          this.homeY=homeY;
+          this.x=Math.random()*cw;
+          this.y=Math.random()*ch;
+          //tmp
+          this.xVelocity=Math.random()*10-5;
+          this.yVelocity=Math.random()*10-5;
+        }
+        Pixel.prototype.move=function()
+        {
+          var homeDX=this.homeX-this.x;
+          var homeDY=this.homeY-this.y;
+          var homeDistance=Math.sqrt(Math.pow(homeDX,2) + Math.pow(homeDY,2));
+          var homeForce=homeDistance*0.01;
+          var homeAngle=Math.atan2(homeDY,homeDX);
+          var cursorForce=0;
+          var cursorAngle=0;
+          if(mx >= 0)
+          {
+            var cursorDX=this.x-mx;
+            var cursorDY=this.y-my;
+            var cursorDistanceSquared=Math.pow(cursorDX,2) + Math.pow(cursorDY,2);
+            cursorForce=Math.min(10000/cursorDistanceSquared,10000);
+            cursorAngle=Math.atan2(cursorDY,cursorDX);
+          }
+          else
+          {
+            cursorForce=0;
+            cursorAngle=0;
+          }
+          this.xVelocity+=homeForce*Math.cos(homeAngle) + cursorForce*Math.cos(cursorAngle);
+          this.yVelocity+=homeForce*Math.sin(homeAngle) + cursorForce*Math.sin(cursorAngle);
+          this.xVelocity*=0.92;
+          this.yVelocity*=0.92;
+          this.x+=this.xVelocity;
+          this.y+=this.yVelocity;
+        }
+        function $(id)
+        {
+          return document.getElementById(id);
+        }
+        function timer()
+        {
+          if(!timerRunning)
+          {
+            timerRunning=true;
+            setTimeout(timer,33);
+            for(var i=0;i<pixels.length;i++)
+            {
+              pixels[i].move();
+            }
+            drawPixels();
+            wordsTxt.focus();
+            n++;
+            if(n%10==0 && (cw!=document.body.clientWidth || ch!=document.body.clientHeight)) body_resize();
+            timerRunning=false;
+          }
+          else
+          {
+            setTimeout(timer,10);
+          }
+        }
+        function drawPixels()
+        {
+          var imageData=ctx.createImageData(cw,ch);
+          var actualData=imageData.data;
+          //imageData.fillStyle = "orange";
+          var index;
+          var goodX;
+          var goodY;
+          var realX;
+          var realY;
+          for(var i=0;i<pixels.length;i++)
+          {
+            goodX=Math.floor(pixels[i].x);
+            goodY=Math.floor(pixels[i].y);
+            for(realX=goodX-resHalfFloor; realX<=goodX+resHalfCeil && realX>=0 && realX<cw;realX++)
+            {
+              for(realY=goodY-resHalfFloor; realY<=goodY+resHalfCeil && realY>=0 && realY<ch;realY++)
+              {
+                index=(realY*imageData.width + realX)*4;
+                actualData[index+0]=31;   //rgba(55,55,105,1)
+                actualData[index+1]=87;
+                actualData[index+2]=15;
+                actualData[index+3]=200;
+              }
+            }
+          }
+          imageData.data=actualData;
+          ctx.putImageData(imageData,0,0);
+        }
+        function readWords()
+        {
+          words=("Catharsis! It's nature");
+          txt=words.split('\n');
+        }
+        function init()
+        {
+          readWords();
+          var fontSize=95;
+          var wordWidth=0;
+          do
+          {
+            wordWidth=0;
+            fontSize-=5;
+            wordCtx.font=fontSize+"px 'Captureit2'";
+            //wordCtx.strokeStyle="orange";
+            //wordCtx.fillStyle = "orange";
+            for(var i=0;i<txt.length;i++)
+            {
+              var w=wordCtx.measureText(txt[i]).width;
+              if(w>wordWidth) wordWidth=w;
+            }
+          } while(wordWidth>cw-50 || fontSize*txt.length > ch-50)
+          wordCtx.clearRect(0,0,cw,ch);
+          wordCtx.textAlign="center";
+          wordCtx.textBaseline="middle";
+          for(var i=0;i<txt.length;i++)
+          {
+            wordCtx.fillText(txt[i],cw/2,ch/2 - fontSize*(txt.length/2-(i+0.5)));
+          }
+          var index=0;
+          var imageData=wordCtx.getImageData(0,0,cw,ch);
+          for(var x=0;x<imageData.width;x+=resolution) //var i=0;i<imageData.data.length;i+=4)
+          {
+            for(var y=0;y<imageData.height;y+=resolution)
+            {
+              i=(y*imageData.width + x)*4;
+              if(imageData.data[i+3]>128)
+              {
+                if(index >= pixels.length)
+                {
+                  pixels[index]=new Pixel(x,y);
+                  //imageData.data[index]=255;
+                }
+                else
+                {
+                  pixels[index].homeX=x;
+                  pixels[index].homeY=y;
+                }
+                index++;
+              }
+            }
+          }
+          pixels.splice(index,pixels.length-index);
+        }
+        function body_resize()
+        {
+          cw=document.body.clientWidth;
+          ch=document.body.clientHeight;
+          canv.width=cw;
+          canv.height=ch;
+          wordCanv.width=cw;
+          wordCanv.height=ch;
+          //wordCanv.fillStyle = "orange";
+          init();
+        }
+        resHalfFloor=Math.floor(resolution/2);
+        resHalfCeil=Math.ceil(resolution/2);
+        body_resize();
+        timer();
+      </script>
+  	<!-- /Catheresis PreLoader-->      
+    <!-- HEADER -->
+    <section id="home" class="parallax">
+      <div class="fullscreen-slider" data-images='["img/background/bg.jpg"]' data-autoplay="true" data-slideinterval="7000" data-transitionspeed="1500" data-transition="1">
+       <div id="progress-back" class="load-item">
+          <div id="progress-bar"></div>
+        </div>
+      </div>
+      <div id="home-content">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="home-hen">
+                  <ul class="hen">
+                    <li><span id="one">Catharsis</span><span id="two">2015</span></li>
+                  </ul>
+                 <div class="riz-text-e">25 March - 27 March</div>
+                </div>
+                <div class="riz-text-e">
+                  by AIACTR and IGDTU Delhi
+                <a class="scroll arrow" href="#about"></a>
+                </div>
+              </div>
+            </div>			
+		</div>
+      </div>
+    </section>
+    <!-- /HEADER -->
+    <!-- NAV -->
+    <nav id="nav-desktop" class="nav-kesho">
+      <div class="container">
+        <ul>
+          	<!--<li><a href="eventlist.html"><span><i class="icon-shopping-cart"></i></span><div>Events</div></a></li>-->
+          	<li><a href="#about"><span><i class="icon-info"></i></span><div>About</div></a></li>            
+          	<li><a href="#events"><span><i class="icon-plus"></i></span><div>Campus Ambassadors</div></a></li>
+          	<li><a href="#gallery"><span><i class="icon-pictures"></i></span><div>Events</div></a></li>
+          	<li><a href="#sponsors"><span><i class="icon-star"></i></span><div>Sponsors</div></a></li>
+		<li><a href="#team"><span><i class="icon-users"></i></span><div>Team</div></a></li>
+<!--		<li><a href="#"><span><i class="icon-leaf"></i></span><div>Social Events</div></a></li>-->		
+		<li><a href="https://www.youtube.com/watch?v=Ay8kbw5ZCXc&feature=youtu.be" target="_blank"><span><i class="icon-youtube"></i></span><div>YouTube</div></a></li>
+		<li><a href="https://www.facebook.com/catharsis15" target="_blank"><span><i class="icon-facebook"></i></span><div>Facebook</div></a></li>
+<!--          	<li><a href="#" target="_blank"><span><i class="icon-book-2"></i></span><div>Brochure</div></a></li>
+-->        </ul>
+      </div>
+    </nav>
+    <!-- /NAV -->
+    <!-- ABOUT -->
+    <section id="about" class="page-i">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 pad-top">
+            <div class="title clearfix">
+              <h1 data-animated="bounceIn">About Us</h1><p>&nbsp;</p><p>&nbsp;</p>
+              <img src="img/lina.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="pad-hun-s pad-hun-9 pad-top"><br/>
+            <p class="under-l"  data-animated="bounceIn">Humanity has thrived for aeons because of its harmonious bond with nature - A bond unfazed for long. But off late, we have witnessed a contamination of our beloved ambience with an eccentric lifestyle over the past century.
+Our insatiable desire to advance at the expense of nature has debilitated our bond with nature.</p></br><p class="under-l"  data-animated="bounceIn">
+We, as students discovered that an issue so fundamental to our existence does not garner the required attention in the formative years of an individual.
+</p></br><p class="under-l"  data-animated="bounceIn">
+So, come this March of 2015, as the new year ascends, we relive that divine bond, rejuvenate the surroundings with awareness, repay in full and in care: our attention to mother earth, revise our obligations for a greener world and respire in the festivity of <strong>NATURE.</strong><br/><br/></P>
+          </div>
+      </div>
+    </section>
+    <section id="events" class="page pad-bottom-2">
+    <div class="clear"></h1></div>
+    <div class="page-yz"><center>  <h1 class="style1" data-animated="bounceIn">Campus Ambassadors</h1>
+    </center>
+      <div class="parallax_wrap">
+        <div class="container">
+        <div class="row">
+         <section id="service-section" class="service-section content-section ha-waypoint services">
+           <div class="grid-container">
+         <div class="col-sm-12 col-xs-12 col-md-6">
+          <div class="col-sm-12 col-xs-12 col-md-12">
+            <div class="services-buttons">
+                <a data-animated="fadeInLeft" data-rel="1" href="javascript:void(0);" class="servicesLink"><img src="img/campus_ambassador_side_panel.png"/></a>
+                <a data-animated="fadeInLeft" data-rel="2" href="javascript:void(0);" class="servicesLink"><img src="img/eligibility_grey.png"/></a>
+                <a data-animated="bounceIn" data-rel="3" href="javascript:void(0);" class="servicesLink"><img src="img/duties_grey.png"/></a>
+            </div>
+        </div>
+       <div class="col-sm-12 col-xs-12 col-md-12">
+            <div id="services-slider" data-animated="fadeInLeft" class="box-fade ten columns offset-by-one">
+                <ul>
+                    <li>
+                        <h3 class="text-ser-2">What We Look For</h3>
+                        <h3 class="text-ser-1"><br>The Campus Ambassadorship Program by Catharsis'15 is a nationwide programme which exposes the students nationwide 
+						from various colleges as efficient managers and creative leaders and provides an opportunity to be a part of Catharsis  2015. Members not 
+						only acquire leadership/ entrepreneurial skills but also gain a social streak with a good character. We call upon our ambassadors to 
+						educate their constituents about the powerful role of socio-initiatives.</h3>
+                    </li>
+                    
+                    <li>
+                        <h3 class="text-ser-2">Criteria</h3>
+                        <h3 class="text-ser-1"><br>All the college/university students from age group (17-25) holding some position of responsibility in 
+						their college and are capable of appreciably representing the views and policies of an ambassador during campaigns are eligible to apply. 
+						Applicant must be consistent to work efficiently during his/her tenure. 
+						A maximum of 2 ambassadors Would be selected from each college.</h3>
+                    </li>
+                    <li>
+                        <h3 class="text-ser-2">Role</h3>
+                        <h3 class="text-ser-1"><br>We look for students who are leaders in their campus, leaders who can inspire their peers, collaborate with 
+						administrators and organize campus events to leave impact. It's a chance to develop and grow as an individual while adding an incredible 
+						line to your resume. This is for those who are having keen interest in updating people about various Catharsis'15 events through public 
+						meets, announcements, notices, social-media, web pages, etc.</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      <div class="my-mon col-sm-12 col-xs-12 col-md-6">
+        <img src="img/pt-1.png" alt="">
+      </div>
+           </div>
+        </section>
+          </div>
+        </div>
+      </div>
+<CENTER>	<a href="http://goo.gl/forms/3MFlpSwZkV" target="_blank">Apply now</a></CENTER>
+    </div>
+    <!-- /SERVICES -->
+    <!-- GALLERY -->
+    <section id="gallery" class="page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 pad-top">
+            <div class="title-folio clearfix">
+            <h1 data-animated="bounceIn">Events</h1>
+            <p class="under-l"  data-animated="bounceIn"><strong> the true lane...</strong> </p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div id="portfolio-wrap">
+        <div id="portfolio-page">
+          <div id="portfolio-content">
+            <div class="container"> 
+              <div id="protfolio-control">
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <a href="#" id="prev-project" title="Previous Project"><i class="icon-chevron-left"></i></a>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                    <a href="#" id="close-project" title="Close Project"><i class="icon-remove"></i></a>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                    <a href="#" id="next-project" title="Next Project"><i class="icon-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div id="portfolio-ajax"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="portfolio-filter">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <ul class="portfolio-filter-list">
+                  <li><a class="active" href="#" data-cat="*"><i class="icon-list"></i></a></li>
+                  <li><a href="#" data-cat="design"><img id="gallery_icons" src="img/ambassador/celeb_grey.png"/></a></li>
+                  <li><a href="#" data-cat="photo"><img id="gallery_icons" src="img/ambassador/cult_grey.png"/></a></li>
+                  <li><a href="#" data-cat="video"><img id="gallery_icons" src="img/ambassador/avirbhav_grey.png"/></a></li>
+                  <li><a href="#" data-cat="web"><img id="gallery_icons" src="img/ambassador/eclectika_idol_grey.png"/></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="portfolio-items" class="portfolio-items">
+        <article class="design">
+            <img src="img/photo/best-out-of-waste.jpg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-camera"></i>
+              <h3>Best Out Of Waste</h3>
+            </div>
+        </article>
+        <article class="design">
+            <img src="img/photo/green-architecture.jpeg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-facetime-video"></i>
+              <h3>Green Architecture</h3>
+            </div>
+        </article>
+        <article class="photo">
+            <img src="img/photo/chintan-workshop-and-quiz.jpeg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-camera"></i>
+              <h3>Chintan</h3>
+            </div>
+        </article>
+        <article class="photo">
+            <img src="img/photo/debate.jpeg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-heart-empty"></i>
+              <h3>Debate</h3>
+            </div>
+        </article>
+        <article class="design">
+            <img src="img/photo/green-audit.jpg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-facetime-video"></i>
+              <h3>Green Audit</h3>
+            </div>
+        </article>
+        <article class="photo">
+            <img src="img/photo/poster-making.jpg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-heart-empty"></i>
+              <h3>Poster Making</h3>
+            </div>
+        </article>
+        <article class="design">
+            <img src="img/photo/plantation-drive.jpeg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-facetime-video"></i>
+              <h3>Plantation Drive</h3>
+            </div>
+        </article>
+        <article class="web">
+            <img src="img/photo/blood-donate-camp.gif" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-facetime-video"></i>
+              <h3>Blood Donation Camp</h3>
+            </div>
+        </article>
+        <article class="video">
+            <img src='img/photo/photo-booth.jpg' alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-heart-empty"></i>
+              <h3>Photo Booth</h3>
+            </div>
+        </article>
+        <article class="video">
+            <img src="img/photo/slow-cycle-race.jpg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-camera"></i>
+              <h3>Slow cycle Race</h3>
+            </div>
+        </article>
+        <article class="video">
+            <img src="img/photo/me-promise.jpg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-heart-empty"></i>
+              <h3>Me Promise</h3>
+            </div>
+        </article>
+        <article class="web">
+            <img src="img/photo/collection-drive.jpeg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-android"></i>
+              <h3>Collection Drive</h3>
+            </div>
+        </article>
+        <article class="web">
+            <img src="img/photo/case-study.jpg" alt="image">
+            <div class="overlay mid-v">
+              <i class="h-photo icon-heart-empty"></i>
+              <h3>Case Study</h3>
+            </div>
+        </article>
+        </div>
+    </section>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+   <!-- Sponsors -->
+    <div id="sponsors" class="page-cli pad-top-p" style="height:600px;">
+      <div class="pad-bottom-2" style="height:inherit;">
+        <div class="container">
+          <div class="row">
+          <div class="col-md-12">
+            <div class="title-tes clearfix pad-top"> 
+               <h1 data-animated="bounceIn">NGO Partners</h1>
+               <img src="./img/partners/chintan_logo.gif">
+               <img src="./img/partners/goonj-logo.png">
+            </div>
+            <div class="title-tes clearfix pad-top"> 
+               <h1 data-animated="bounceIn">Media Partners</h1>
+               <img src="./img/partners/Delhi-Greens.jpg">
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- TEAM -->
+    <section id="team" class="page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 pad-top">
+          <div class="title-team clearfix pad-top">
+            <h1 data-animated="bounceIn">Team Catharsis</h1>
+            <img src="img/lina.png" alt="">
+          </div>
+        </div>
+      </div>
+                      <div class="fullwidth" style="text-align:center;" align="center">
+				<div style="margin: 0px 85px; overflow:hidden;"><center>
+					<div class="imgholder">
+                                    		<div class="outer1 circle"></div>
+                                    		<div class="outer2 circle"></div>
+                                    		<figure>
+                                    			<img src="img/team/cs.jpg" />
+                                    			<figcaption class="caption">Official Id<font size=-1></br>info@catharsis15.in</br></font></figcaption>
+                                    		</figure>
+                                    	</div>
+          	<div class="imgholder">
+                                    		<div class="outer1 circle"></div>
+                                    		<div class="outer2 circle"></div>
+                                    		<figure>
+                                    			<img src="img/team/aa.jpg" />
+                                    			<figcaption class="caption">Abhi Arora<font size=-1></br></br></font></figcaption>
+                                    		</figure>
+                                    	</div>
+					<div class="imgholder">
+                                    		<div class="outer1 circle"></div>
+                                    		<div class="outer2 circle"></div>
+                                    		<figure>
+                                    			<img src="img/team/sj.jpg" />
+                                    			<figcaption class="caption">Suvi Jain<font size=-1></br></br></font></figcaption>
+                                    		</figure>
+                                    	</div>
+					<div class="imgholder">
+                                    		<div class="outer1 circle"></div>
+                                    		<div class="outer2 circle"></div>
+                                    		<figure>
+                                    			<img src="img/team/ls.jpg" />
+                                    			<figcaption class="caption">Lokender Sarna<font size=-1></br></br></font></figcaption>
+                                    		</figure>
+                                    	</div>
+					<div class="imgholder">
+                                    		<div class="outer1 circle"></div>
+                                    		<div class="outer2 circle"></div>
+                                    		<figure>
+                                    			<img src="img/team/gg.jpg" />
+                                    			<figcaption class="caption">Gunvardhan Gupta<font size=-1></br></br></font></figcaption>
+                                    		</figure>
+                                    	</div>
+					</center></div><br>
+
+
+
+                                    <div style="margin: 0px 175px;">
+                                        <div class="imgholder">
+                                          <div class="outer1 circle"></div>
+                                          <div class="outer2 circle"></div>
+                                          <figure>
+                                            <img src="img/team/skc.jpg" />
+                                            <figcaption class="caption">Shubhit Kumar Chattarji<font size=-1></br></br></font></figcaption>
+                                          </figure>
+                                        </div>
+                                      	<div class="imgholder">
+                                      		<div class="outer1 circle"></div>
+                                      		<div class="outer2 circle"></div>
+                                      		<figure>
+                                      			<img src="img/team/hp.jpg" />
+                                      			<figcaption class="caption">Himanshu Pandey<font size=-1></br></br></font></figcaption>
+                                      		</figure>
+                                      	</div>
+                                      	<div class="imgholder">
+                                      		<div class="outer1 circle"></div>
+                                      		<div class="outer2 circle"></div>
+                                      		<figure>
+                                      			<img src="img/team/aj.jpg" />
+                                      			<figcaption class="caption">Anurag Jain<font size=-1></br></br></font></figcaption>
+                                      		</figure>
+                                      	</div>
+					<div class="imgholder">
+                                      		<div class="outer1 circle"></div>
+                                      		<div class="outer2 circle"></div>
+                                      		<figure>
+                                      			<img src="img/team/rt.jpg" />
+                                      			<figcaption class="caption">Rahul Tiwari<font size=-1></br></br></font></figcaption>
+                                      		</figure>
+                                      	</div></div>
+										</div>
+									<div style="margin: 0px auto;">
+                      <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!-- FOOTER -->
+    <footer id="footer" style="position:fixed;bottom:0px;left:0px;right:0px;z-index:6;height:50px;">
+        <div class="container">
+          <div class="rower">
+              <div id="left">
+                <p id="copyright">
+                   TOP <a class="scroll" href="#home"><img src="img/tt.png" alt=""></a>              
+               </div>
+               <div id="center" style="font-family:robotothin;">Copyright. &copy;Catharsis 2015.All Right Reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+               <div> Developed by: <a href="https://www.facebook.com/1993anuragjain" target="_blank">Anurag Jain</a></div>
+          </div>
+        </div> 
+    </footer>
+    <!-- /FOOTER -->
+    <!-- JS -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax.js"></script>
+    
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="js/jquery.timelinr-0.9.53.js"></script>
+    <script type="text/javascript" src="js/jquery.appear.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+    
+    <script type="text/javascript" src="js/retina.min.js"></script>
+    <script type="text/javascript" src="js/supersized.3.2.7.min.js"></script>
+    <script type="text/javascript" src="js/supersized.shutter.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/jquery.sudoslider.min.js"></script>
+    <script src="js/service-js.js"></script>
+    </body>
+</html>

@@ -1,0 +1,1011 @@
+/*---------------------------------------------------
+
+Theme Name: Moderno - Responsive Onepage portfolio Template
+Theme URI: http://themecafe.serverkurd.com/moderno/
+Author: ThemeCafe
+Author URI: http://themecafe.serverkurd.com
+
+
+  Content:
+
+    - Responsive - Body & Sections
+
+---------------------------------------------------*/
+
+@media screen and (min-width: 1200px) {
+
+.h-link, .h-photo, .h-video, .h-project {
+    margin-top: 3%;
+}
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+.pad-hun {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.mem-pp{
+    margin-top: 50px;
+}
+.mem-details {
+    padding-top: 50px;
+}
+.socicals li a{
+    color: #222;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: inline-block;
+    line-height: 40px;
+}
+.under-sec {
+    bottom: -70px;
+}
+.under-sec:hover {
+    bottom: -30px;
+}
+.under-sec img{
+    max-width: 95%;
+}
+
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+.service-icon{
+	margin: 8px 0;
+}
+
+.services-buttons {
+    text-align: center;
+}
+.text-ser-1 {
+    text-align: center;
+}
+
+.text-ser-2 {
+    text-align: center;
+}
+
+.mem-details {
+    padding-top: 110px;
+    margin-top: 5px;
+}
+.mem-item{
+	margin-right: auto;
+	margin-left: auto;
+	width: 300px
+}
+
+.mem-info .mem-details
+{
+	top: -460px;
+}
+.mem-avatar:hover + .mem-info .mem-details, .mem-info:hover .mem-details
+{
+	height: 455px;
+}
+
+.marg-7 {
+    top: 50px;
+}
+.under-sec {
+    bottom: -70px;
+}
+.under-sec:hover {
+    bottom: -30px;
+}
+.under-sec img{
+    max-width: 105%;
+}
+
+.pad-hun-s {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.blog-ic h3{
+    text-align: center;
+    float: none;
+    display: inline-block;
+    font-size: 22px;
+}
+
+.blog-ic span{
+    float: none;
+}
+
+.blog-bg{
+    background: #fff;
+}
+
+.price-t-b{
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.15);
+    border-right: 0px dashed rgba(255,255,255,0.15);
+    margin-bottom: 30px;
+    padding-bottom: 40px;
+}
+
+}
+
+@media screen and (min-width: 438px) and (max-width: 767px) {
+
+
+.title{
+    background: #fff;
+}
+.title-team{
+    background: #fff;
+}
+.title-cont{
+    background: #fff;
+}
+.title-serv{
+    background: #fff;
+}
+.title-folio{
+    background: #fff;
+}
+.blog-bg{
+    background: #fff;
+}
+
+.title-sk{
+    text-align: center;
+}.title-sk h1{
+    text-align: center;
+}
+.res-pic img {
+    width: 430px
+}
+.under-lll-sk
+{
+    text-align: center;
+}
+.under-j
+{
+    font-size: 22px;
+}
+.under-sec {
+    bottom: -70px;
+}
+.under-sec:hover {
+    bottom: -30px;
+}
+.under-sec img{
+    max-width: 105%;
+}
+
+.pad-hun-s {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.a-i {
+
+    margin-top: -40px;
+}
+.services-buttons {
+    text-align: center;
+}
+.text-ser-1 {
+    text-align: center;
+}
+
+.text-ser-2 {
+    text-align: center;
+}
+
+.service-icon {
+    max-width: 230px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.mem-item{
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 300px
+}
+.mem-details {
+    padding-top: 150px;
+    margin-top: 5px;
+}
+.pad-hun {
+	padding-right: 40px;
+	padding-left: 40px;
+}
+
+.mem-info .mem-details
+{
+	top: -500px;
+}
+.mem-avatar:hover + .mem-info .mem-details, .mem-info:hover .mem-details
+{
+	height: 495px;
+}
+
+
+
+.h-link, .h-photo, .h-video, .h-project {
+    width: 0px;
+    height: 0px;
+    margin-top: 8%;
+}
+
+
+.under-l, .under-ll, .under-lll, .under-llll 
+{
+	font-size: 22px;
+}
+.services-buttons a {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    line-height: 116px;
+}
+
+.services-buttons a i {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    margin-bottom: 15px;
+}
+
+.services-buttons a:hover {
+    font-size: 50px;
+}
+
+.services-buttons a.current {
+    font-size: 50px;
+}
+
+
+.service-halat {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/html5.png') center no-repeat;
+}
+
+.service-halat-r {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/puzzle.png') center no-repeat;
+}
+
+.service-halat-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/bulb.png') center no-repeat;
+}
+
+.service-halat-r-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/key.png') center no-repeat;
+}
+
+.blog-ic {
+    float: none;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blog-ic span{
+    float: none;
+    margin-bottom: 10px;
+}
+
+.blog-bg{
+    background: #fff;
+}
+
+.price-t-b{
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.15);
+    border-right: 0px dashed rgba(255,255,255,0.15);
+    margin-bottom: 30px;
+    padding-bottom: 40px;
+}
+
+.piechart canvas {
+    left: 54%;
+    margin-left: -80px;
+}
+.piechart span {
+    left: 54%;
+    margin-left: -61px;
+}
+.piechart h3 {
+    margin-left:4px;
+}
+}
+@media screen and (min-width: 438px) and (max-width: 537px) {
+
+.portfolio-items article .overlay i{
+    font-size: 55px;
+}
+}
+@media screen and (min-width: 400px) and (max-width: 437px) {
+
+
+.title{
+    background: #fff;
+}
+.title-team{
+    background: #fff;
+}
+.title-cont{
+    background: #fff;
+}
+.title-serv{
+    background: #fff;
+}
+.title-folio{
+    background: #fff;
+}
+.blog-bg{
+    background: #fff;
+}
+
+.title-sk{
+    text-align: center;
+}.title-sk h1{
+    text-align: center;
+}
+.under-lll-sk
+{
+    text-align: center;
+}
+
+.bx-v
+{
+    font-size: 30px;
+    font-family: 'robotothin', Helvetica, Arial, sans-serif;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.portfolio-items article .overlay i{
+    font-size: 45px;
+}
+
+.under-j
+{
+    font-size: 20px;
+}
+.res-pic img {
+    width: 370px
+}
+.pad-hun-s {
+    padding-right: 40px;
+    padding-left: 40px;
+}
+.under-sec img{
+    max-width: 444%;
+}
+
+.n-show {
+    display: none;
+}
+.a-i {
+
+    margin-top: -40px;
+}
+.service-icon {
+    max-width: 230px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.services-buttons {
+    text-align: center;
+}
+.text-ser-1 {
+    text-align: center;
+}
+
+.text-ser-2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.mem-item{
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 300px
+}
+
+.mem-details {
+    padding-top: 110px;
+    margin-top: 5px;
+}
+.mem-pp{
+    margin-top: 60px;
+}
+
+.pad-hun {
+	padding-right: 50px;
+	padding-left: 50px;
+}
+
+.mem-info .mem-details
+{
+	top: -435px;
+}
+.mem-avatar:hover + .mem-info .mem-details, .mem-info:hover .mem-details
+{
+	height: 430px;
+}
+
+
+
+.h-link, .h-photo, .h-video, .h-project {
+    width: 0px;
+    height: 0px;
+    margin-top: 8%;
+}
+
+
+.under-l, .under-ll, .under-lll, .under-llll 
+{
+	font-size: 22px;
+}
+.services-buttons a {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    line-height: 116px;
+}
+
+.services-buttons a i {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    margin-bottom: 15px;
+}
+
+.services-buttons a:hover {
+    font-size: 50px;
+}
+
+.services-buttons a.current {
+    font-size: 50px;
+}
+
+.service-halat {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/html5.png') center no-repeat;
+}
+
+.service-halat-r {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/puzzle.png') center no-repeat;
+}
+
+.service-halat-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/bulb.png') center no-repeat;
+}
+
+.service-halat-r-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/key.png') center no-repeat;
+}
+
+.price-t-b{
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.15);
+    border-right: 0px dashed rgba(255,255,255,0.15);
+    margin-bottom: 30px;
+    padding-bottom: 40px;
+}
+.piechart canvas {
+    left: 54%;
+    margin-left: -80px;
+}
+.piechart span {
+    left: 54%;
+    margin-left: -61px;
+}
+.piechart h3 {
+    margin-left:-4px;
+}
+}
+@media screen and (min-width: 325px) and (max-width: 399px) {
+
+.title{
+    background: #fff;
+}
+.title-team{
+    background: #fff;
+}
+.title-cont{
+    background: #fff;
+}
+.title-serv{
+    background: #fff;
+}
+.title-folio{
+    background: #fff;
+}
+.blog-bg{
+    background: #fff;
+}
+
+.title-sk{
+    text-align: center;
+}.title-sk h1{
+    text-align: center;
+}
+
+.bx-v
+{
+    font-size: 25px;
+}
+.res-pic img {
+    width: 320px
+}
+.under-j
+{
+    font-size: 18px;
+    padding-top: 110px;
+}
+.under-lll-sk
+{
+    text-align: center;
+}
+.pad-hun-s {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.under-sec img{
+    max-width: 400%;
+}
+.under-sec {
+    bottom: -30px;
+}
+.under-sec:hover {
+    bottom: -10px;
+}
+
+.n-show {
+    display: none;
+}
+.a-i {
+
+    margin-top: -40px;
+}
+.service-icon {
+    max-width: 230px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.mem-details {
+    padding-top: 210px;
+    margin-top: 5px;
+}
+.mem-item{
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 300px
+}
+.pad-hun {
+	padding-right: 25px;
+	padding-left: 25px;
+}
+
+.mem-pp{
+    margin-top: 30px;
+}
+
+.mem-info .mem-details
+{
+	top: -500px;
+}
+.mem-avatar:hover + .mem-info .mem-details, .mem-info:hover .mem-details
+{
+	height: 495px;
+}
+.h-link, .h-photo, .h-video, .h-project {
+    width: 0px;
+    height: 0px;
+    margin-top: 15%;
+}
+
+.under-l, .under-ll, .under-lll, .under-llll 
+{
+	font-size: 19px;
+}
+.services-buttons {
+    text-align: center;
+}
+.text-ser-1 {
+    font-size:18px;
+    text-align: center;
+}
+
+.text-ser-2 {
+    font-size: 30px;
+    text-align: center;
+}
+.services-buttons a {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    line-height: 70px;
+}
+
+.services-buttons a i {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    line-height: 70px;
+    margin-bottom: 15px;
+}
+
+.services-buttons a:hover {
+    font-size: 50px;
+}
+
+.services-buttons a.current {
+    font-size: 50px;
+}
+
+.service-halat {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/html5.png') center no-repeat;
+}
+
+.service-halat-r {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/puzzle.png') center no-repeat;
+}
+
+.service-halat-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/bulb.png') center no-repeat;
+}
+
+.service-halat-r-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/key.png') center no-repeat;
+}
+
+.blog-ic {
+    float: none;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blog-ic span{
+    float: none;
+    margin-bottom: 10px;
+}
+
+.blog-bg{
+    background: #fff;
+}
+
+.price-t-b{
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.15);
+    border-right: 0px dashed rgba(255,255,255,0.15);
+    margin-bottom: 30px;
+    padding-bottom: 40px;
+}
+.pad-hun-p {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.piechart canvas {
+    left: 54%;
+    margin-left: -80px;
+}
+.piechart span {
+    left: 54%;
+    margin-left: -61px;
+}
+.piechart h3 {
+    margin-left:-4px;
+}
+}
+
+@media screen and (min-width: 1px) and (max-width: 327px) {
+
+.title{
+    background: #fff;
+}
+.title-team{
+    background: #fff;
+}
+.title-cont{
+    background: #fff;
+}
+.title-serv{
+    background: #fff;
+}
+.title-folio{
+    background: #fff;
+}
+.blog-bg{
+    background: #fff;
+}
+
+.title-sk{
+    text-align: center;
+}.title-sk h1{
+    text-align: center;
+}
+
+.bx-v
+{
+    font-size: 25px;
+}
+.res-pic img {
+    width: 220px
+}
+.under-j
+{
+    font-size: 16px;
+    padding-top: 110px;
+}
+.under-lll-sk
+{
+    text-align: center;
+}
+.pad-hun-s {
+    padding-right: 35px;
+    padding-left: 35px;
+}
+.under-sec img{
+    max-width: 500%;
+}
+
+.under-sec {
+    bottom: -20px;
+}
+.under-sec:hover {
+    bottom: -0px;
+}
+.n-show {
+    display: none;
+}
+.min-s img {
+    width: 200px
+}
+
+.socicals li a{
+    color: #222;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: inline-block;
+    line-height: 40px;
+}
+
+.mem-item{
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 300px
+}
+.pad-hun {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.mem-details {
+    padding-top: 30px;
+}.mem-pp{
+    margin-top: 70px;
+}
+
+.under-l, .under-ll, .under-lll, .under-llll 
+{
+	font-size: 17px;
+}
+.services-buttons {
+    text-align: center;
+}
+.text-ser-1 {
+    font-size:18px;
+    text-align: center;
+}
+
+.text-ser-2 {
+    font-size: 30px;
+    text-align: center;
+}
+.services-buttons a {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    line-height: 50px;
+}
+
+.services-buttons a i {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}
+
+.services-buttons a:hover {
+    font-size: 30px;
+}
+
+.services-buttons a.current {
+    font-size: 30px;
+}
+
+.service-halat {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/html5.png') center no-repeat;
+}
+
+.service-halat-r {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/puzzle.png') center no-repeat;
+}
+
+.service-halat-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/bulb.png') center no-repeat;
+}
+
+.service-halat-r-d {
+    padding: 0px;
+    text-align: center;
+    background: url('../img/icons/key.png') center no-repeat;
+}
+
+
+.blog-ic {
+    float: none;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blog-ic span{
+    float: none;
+    margin-bottom: 10px;
+}
+
+.blog-bg{
+    background: #fff;
+}
+
+.price-t-b{
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.15);
+    border-right: 0px dashed rgba(255,255,255,0.15);
+    margin-bottom: 30px;
+    padding-bottom: 40px;
+}
+.pad-hun-p {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.piechart canvas {
+    left: 58%;
+    margin-left: -80px;
+}
+.piechart span {
+    left: 58%;
+    margin-left: -61px;
+}
+.piechart h3 {
+    margin-left:4px;
+}
+
+.riz-text-e
+{
+    font-size: 18px;
+}
+
+}
+
+/* ------------------ Portfolio-Responsive ------------------ */
+
+@media screen and (min-width: 1580px) {
+
+.portfolio-items article .overlay
+{
+    padding: 100px 10px;
+}
+
+}
+
+@media screen and (min-width: 1380px) and (max-width: 1579px) {
+
+.portfolio-items article .overlay
+{
+    padding: 75px 10px;
+}
+
+}
+@media screen and (min-width: 1181px) and (max-width: 1379px) {
+
+.portfolio-items article .overlay
+{
+    padding: 65px 10px;
+}
+
+}
+@media screen and (min-width: 1080px) and (max-width: 1180px) {
+
+.portfolio-items article .overlay
+{
+    padding: 50px 10px;
+}
+
+}
+@media screen and (min-width: 1000px) and (max-width: 1079px) {
+
+.portfolio-items article .overlay
+{
+    padding: 40px 10px;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 870px) {
+.portfolio-items article .overlay
+{
+    padding: 40px 10px;
+}
+}
+@media screen and (min-width: 650px) and (max-width: 767px) {
+.portfolio-items article .overlay
+{
+    padding: 65px 10px;
+}
+}
+@media screen and (min-width: 521px) and (max-width: 600px) {
+.portfolio-items article .overlay
+{
+    padding: 45px 10px;
+}
+}
+@media screen and (min-width: 400px) and (max-width: 520px) {
+.portfolio-items article .overlay
+{
+    padding: 35px 10px;
+}
+}
+@media screen and (min-width: 350px) and (max-width: 399px) {
+.portfolio-items article .overlay
+{
+    padding: 85px 10px;
+}
+}
+
+
+@media screen and (max-width: 1200px) {
+.service-halat {
+    margin-top: 20px
+}
+.service-halat-r {
+    margin-top: 30px
+}
+.service-halat-d {
+    margin-top: 30px
+}
+.service-halat-r-d {
+    margin-top: 30px
+}
+}
